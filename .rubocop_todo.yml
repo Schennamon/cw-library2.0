@@ -1,0 +1,36 @@
+Metrics/BlockLength:
+  Max: 55
+  Exclude:
+    - 'config/routes.rb'
+    - 'config/environments/*.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Metrics/MethodLength:
+  IgnoredMethods:
+    - 'change'
+
+Layout/LineLength:
+  Max: 190
+  Exclude:
+    - 'config/routes.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 35
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'app/contracts/application_contract.rb'
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+    - 'db/seeds/*.rb'
+
+RSpec/ExampleLength:
+  Max: 10
+
+
+
