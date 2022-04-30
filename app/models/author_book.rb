@@ -1,17 +1,24 @@
 # == Schema Information
 #
-# Table name: books
+# Table name: author_books
 #
-#  id               :integer          not null, primary key
-#  country          :string
-#  description      :text
-#  language         :string
-#  publication_date :date
-#  title            :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  author_id  :integer          not null
+#  book_id    :integer          not null
 #
-class Book < ApplicationRecord
+# Indexes
+#
+#  index_author_books_on_author_id  (author_id)
+#  index_author_books_on_book_id    (book_id)
+#
+# Foreign Keys
+#
+#  author_id  (author_id => authors.id)
+#  book_id    (book_id => books.id)
+#
+class AuthorBook < ApplicationRecord
 
   # == Extensions ===========================================================
 
@@ -20,15 +27,10 @@ class Book < ApplicationRecord
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
-  has_many :book_genres, dependent: :destroy
-  has_many :author_books, dependent: :destroy
-  has_many :genres, through: :book_genres
-  has_many :books, through: :author_books
-
-  accepts_nested_attributes_for :book_genres, allow_destroy: true
+  belongs_to :author
+  belongs_to :book
 
   # == Validations ==========================================================
-  validates :title, presence: true, length: { minimum: 3, maximum: 100 }
 
   # == Scopes ===============================================================
 
