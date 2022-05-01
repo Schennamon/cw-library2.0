@@ -29,7 +29,7 @@ gem 'jbuilder'
 
 # Admin panel
 gem 'activeadmin'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'sass-rails'
 
 gem 'country_select', '~> 6.0'
