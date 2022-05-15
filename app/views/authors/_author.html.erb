@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% @authors.each do |author| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= link_to author.full_name, author, class: "text-decoration-none text-reset" %></h5>
+
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group text-center">
+                <%= button_to "View", author, method: :get, class: "btn btn-sm btn-outline-success me-2" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
