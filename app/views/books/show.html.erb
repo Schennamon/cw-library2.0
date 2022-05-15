@@ -1,0 +1,45 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-5 mt-5">
+
+  <div class="col"></div>
+
+  <div class="col">
+    <div class="card shadow-sm">
+      <%# if @book.cover.attached? %>
+        <%#= image_tag @book.cover, width: "200px", class: "card-img-top"%>
+      <%# end %>
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= @book.title %></h5>
+
+        <% if !@book.authors.empty? %>
+          <p>
+            <% if @book.authors.count > 1 %>
+              Authors:
+            <% else %>
+              Author:
+            <% end %>
+            <% @book.authors.each do |author| %>
+              <%= author.full_name %><% if author != @book.authors.last %>,<% end %>
+            <% end %>
+          </p>
+        <% end %>
+
+        <% if !@book.book_genres.empty? %>
+          <p>
+            <% if @book.book_genres.count > 1 %>
+              Genres:
+            <% else %>
+              Genre:
+            <% end %>
+            <% @book.book_genres.each do |group| %>
+              <%= group.genre.name %><% if group.genre != @book.genres.last %>,<% end %>
+            <% end %>
+          </p>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col"></div>
+
+</div>

@@ -36,7 +36,9 @@ class Author < ApplicationRecord
   # == Callbacks ============================================================
 
   # == Class Methods ========================================================
-
+  def full_name
+    full_name = "#{self.first_name} #{self.last_name}"
+  end
   # == Instance Methods =====================================================
 
 end

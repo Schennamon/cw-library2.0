@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% @books.each do |book| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-title">
+              Title:
+              <%= link_to book.title, book, class: "text-decoration-none text-reset" %>
+            </p>
+
+            <% if !book.genres.empty? %>
+              <p>
+                <% if book.genres.count > 1 %>
+                  Genres:
+                <% else %>
+                  Genre:
+                <% end %>
+                <% book.genres.each do |genre| %>
+                  <%= genre.name %><% if genre != book.genres.last %>,<% end %>
+                <% end %>
+              </p>
+            <% end %>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group text-center">
+                <%= button_to "View", book, method: :get, class: "btn btn-sm btn-outline-success me-2" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users, only: %i[show index]
-  resources :books
+  resources :books, only: %i[show index]
   resources :authors
   resources :genres, only: :show
 end
