@@ -55,13 +55,23 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Add bootstrap framework
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'jquery-rails'
 
+# Add pagination on page
+gem 'will_paginate', '~> 3.3'
+
+# Font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
+gem "font-awesome-rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
 end
 
 group :development do

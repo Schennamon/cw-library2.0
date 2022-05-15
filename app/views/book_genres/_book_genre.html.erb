@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% @groups.each do |group| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-title">Title: <%= link_to group.book.title, group.book, class: "text-decoration-none text-reset" %></p>
+            <p>
+              <% if group.book.genres.count > 1 %>
+                Genres:
+              <% else %>
+                Genre:
+              <% end %>
+              <% group.book.genres.each do |genre| %>
+                <%= genre.name %><% if genre != group.book.genres.last %>,<% end %>
+              <% end %>
+            </p>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group text-center">
+                <%#= button_to "View", group.book, method: :get, class: "btn btn-sm btn-outline-success me-2" %>
+                <%# if logged_in? %>
+                  <%#= button_to "Edit", edit_book_path(group.book), method: :get, class: "btn btn-sm btn-outline-info me-2" %>
+                  <%#= button_to "Delete", book_path(group.book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger" %>
+                <%# end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

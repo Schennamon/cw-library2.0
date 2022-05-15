@@ -16,6 +16,7 @@ class Genre < ApplicationRecord
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
+  has_many :book_genres, dependent: :destroy
 
   # == Validations ==========================================================
 
