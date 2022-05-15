@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[show index]
   resources :books, only: %i[show index]
-  resources :authors
+  resources :authors, only: %i[show index]
   resources :genres, only: :show
 end

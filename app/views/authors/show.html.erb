@@ -1,0 +1,42 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-5 mt-5">
+
+  <div class="col"></div>
+
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= @author.full_name %></h5>
+        <p>Date of birth: <%= @author.date_of_birth %></p>
+        <p>Country: <%= @author.country %></p>
+        <% if @author.books.present? %>
+          <p>
+            <% if @author.books.count > 1 %>
+              Books:
+            <% else %>
+              Book:
+            <% end %>
+            <% @author.books.each do |book| %>
+              <%= link_to book.title, book, class: "text-decoration-none text-reset" %><% if book != @author.books.last %>,<% end %>
+            <% end %>
+          </p>
+        <% end %>
+        <% if @author.genres.present? %>
+          <p>
+            <% if @author.genres.count > 1 %>
+              Genres:
+            <% else %>
+              Genre:
+            <% end %>
+            <% @author.genres.each do |genre| %>
+              <%= genre.name %><% if genre != @author.genres.last %>,<% end %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col"></div>
+
+</div>
+
