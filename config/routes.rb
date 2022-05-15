@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users, only: %i[show index]
+  resources :books
+  resources :authors
 end
