@@ -20,6 +20,8 @@ class Book < ApplicationRecord
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
+  has_one_attached :cover
+
   has_many :book_genres, dependent: :destroy
   has_many :author_books, dependent: :destroy
   has_many :genres, through: :book_genres
