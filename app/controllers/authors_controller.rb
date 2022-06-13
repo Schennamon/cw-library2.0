@@ -1,6 +1,7 @@
 class AuthorsController < ApplicationController
 
   before_action :set_author, only: :show
+  before_action :authenticate_user!
 
   def show; end
 

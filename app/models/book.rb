@@ -3,6 +3,7 @@
 # Table name: books
 #
 #  id               :integer          not null, primary key
+#  count            :integer          default(0)
 #  country          :string
 #  description      :text
 #  language         :string
@@ -27,6 +28,8 @@ class Book < ApplicationRecord
   has_many :genres, through: :book_genres
   has_many :books, through: :author_books
   has_many :authors, through: :author_books
+  has_many :reserved_books, dependent: :destroy
+  has_many :users, through: :reserved_books
 
   accepts_nested_attributes_for :book_genres, allow_destroy: true
 
@@ -34,6 +37,8 @@ class Book < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }
 
   # == Scopes ===============================================================
+  scope :in_stock, ->{ where('count > ?', 0) }
+  scope :by_reserve, ->(user) { includes(:reserved_books).where(reserved_books: { user_id: user.id }) }
 
   # == Callbacks ============================================================
 

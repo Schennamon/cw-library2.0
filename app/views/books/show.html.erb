@@ -35,6 +35,9 @@
             <% end %>
           </p>
         <% end %>
+        <% if @book.description.present? %>
+          <p>Description: <%= @book.description %></p>
+        <% end %>
 
       </div>
     </div>

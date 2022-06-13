@@ -18,9 +18,28 @@
 #
 class User < ApplicationRecord
 
+  # == Extensions ===========================================================
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # == Constants ============================================================
+
+  # == Attributes ===========================================================
+
+  # == Relationships ========================================================
+  has_many :reserved_books, dependent: :destroy
+  has_many :books, through: :reserved_books
+
+  # == Validations ==========================================================
+
+  # == Scopes ===============================================================
+
+  # == Callbacks ============================================================
+
+  # == Class Methods ========================================================
+
+  # == Instance Methods =====================================================
 
 end
