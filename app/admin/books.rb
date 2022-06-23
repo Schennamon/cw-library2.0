@@ -1,5 +1,5 @@
 ActiveAdmin.register Book do
-  permit_params :title, :country, :language, :description, :publication_date, :cover,
+  permit_params :title, :country, :language, :description, :publication_date, :cover, :count,
                 book_genres_attributes: %i[id genre_id book_id _destroy]
 
   show do
@@ -10,6 +10,7 @@ ActiveAdmin.register Book do
           image_tag @book.cover, width: "200px"
         end
       end
+      row :count
       row :title
       row :country
       row :language
@@ -28,6 +29,7 @@ ActiveAdmin.register Book do
   index do
     selectable_column
     id_column
+    column :count
     column :title
     column :country
     column :publication_date
@@ -36,6 +38,7 @@ ActiveAdmin.register Book do
 
   form do |f|
     f.inputs do
+      f.input :count
       f.input :title
       f.input :country
       f.input :language

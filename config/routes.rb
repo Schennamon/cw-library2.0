@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
-  resources :users, only: %i[show index]
+  scope module: :users do
+    resources :users, only: %i[show index]
+    resources :reserved_books, only: %i[create index destroy]
+  end
   resources :books, only: %i[show index]
   resources :authors, only: %i[show index]
   resources :genres, only: :show

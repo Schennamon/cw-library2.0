@@ -64,7 +64,20 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.3'
 
 # Font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+# dry-rb is a collection of next-generation Ruby libraries
+gem 'dry-struct'
+gem 'dry-validation'
+
+# A simple, standardized way to build and use Service Objects in Ruby
+gem 'simple_command'
+
+# A library for generating fake data such as names, addresses, and phone numbers.
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
+gem 'jwt'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

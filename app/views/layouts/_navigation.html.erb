@@ -8,10 +8,8 @@
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a href="#" class="nav-link px-2 text-secondary"></a></li>
         <%= link_to "Books", books_path, class: "nav-link px-2 text-white" %>
-        <%# if logged_in? %>
-          <%= link_to "Authors", authors_path, class: "nav-link px-2 text-secondary" %>
-          <%#= link_to "Ctrl panel", admin_panel_path, class: "nav-link px-2 text-secondary" %>
-        <%# end %>
+        <%= link_to "Authors", authors_path, class: "nav-link px-2 text-secondary" %>
+        <%= link_to "Reserved books", reserved_books_path, class: "nav-link px-2 text-secondary" %>
       </ul>
 
       <%# if !logged_in? %>
@@ -23,7 +21,11 @@
           <%#= current_admin.name %>
         </div>
         <div class="text-end">
-          <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2" %>
+          <% if current_user.present? %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2" %>
+          <% else %>
+            <%= button_to "Log in", new_user_session_path, method: :get, class: "btn btn-outline-light me-2" %>
+          <% end %>
         </div>
       <%# end %>
     </div>

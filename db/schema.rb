@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_125224) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_17_060128) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -109,12 +109,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_125224) do
     t.date "publication_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count", default: 0
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reserved_books", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reserved_books_on_book_id"
+    t.index ["user_id"], name: "index_reserved_books_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -137,4 +147,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_125224) do
   add_foreign_key "author_genres", "genres"
   add_foreign_key "book_genres", "books"
   add_foreign_key "book_genres", "genres"
+  add_foreign_key "reserved_books", "books"
+  add_foreign_key "reserved_books", "users"
 end
